@@ -13,6 +13,10 @@ class TaskService {
     static createTask(description: string): Promise<ITask> {
         return TaskRepository.createTask(description);
     }
+
+    static deleteTask(id: string): Promise<ITask> {
+        return TaskRepository.deleteTask(id);
+    }
 }
 
 export default TaskService;
