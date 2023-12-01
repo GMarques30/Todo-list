@@ -18,8 +18,8 @@ class TaskService {
         return TaskRepository.deleteTask(id);
     }
 
-    static updateTask(description: string, completed: string) {
-        return TaskRepository.updateTask(description, completed);
+    static updateTask(id: string, description: string, completed: string) {
+        return TaskRepository.updateTask(id, description, completed);
     }
 }
 

@@ -50,9 +50,10 @@ class TaskController {
 
     static async updateTask(req: Request, res: Response): Promise<void> {
         try {
+            const { id } = req.params;
             const { description, completed } = req.body;
 
-            const result = await TaskService.updateTask(description, completed);
+            const result = await TaskService.updateTask(id, description, completed);
             res.status(200).json(result);
         } catch(err) {
             console.error(err);
