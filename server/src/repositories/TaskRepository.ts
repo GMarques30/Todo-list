@@ -12,7 +12,7 @@ class TaskRepository {
         })
     }
 
-    static getTaskById(id: string): Promise<ITask> {
+    static getTaskById(id: number): Promise<ITask> {
         return new Promise<ITask>((resolve, reject) => {
             database.query("SELECT * FROM tasks WHERE id = ?", [id], (err, res) => {
                 if(err) return reject(err);
@@ -32,7 +32,7 @@ class TaskRepository {
         })
     }
 
-    static deleteTask(id: string): Promise<ITask> {
+    static deleteTask(id: number): Promise<ITask> {
         return new Promise<ITask>((resolve, reject) => {
             database.query("DELETE FROM tasks WHERE id = ?", [id], (err, res) => {
                 if(err) return reject(err);
@@ -42,7 +42,7 @@ class TaskRepository {
         })
     }
 
-    static updateTask(id: string, description: string, completed: string): Promise<ITask> {
+    static updateTask(id: number, description: string, completed: boolean): Promise<ITask> {
         return new Promise<ITask>((resolve, reject) => {
             database.query("UPDATE tasks SET description = ?, completed = ? WHERE id = ?", [description, completed, id], (err, res) => {
                 if(err) return reject(err);
