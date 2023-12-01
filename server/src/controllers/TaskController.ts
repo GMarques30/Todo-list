@@ -8,7 +8,19 @@ class TaskController {
             res.status(200).json(result);
         } catch (err) {
             console.error(err);
-            res.status(500).json(err);
+            res.status(500).json({error: 'Internal Server Error'});
+        }
+    }
+
+    static async getTaskById(req: Request, res: Response): Promise<void>{
+        try {
+            const { id } = req.params;
+
+            const result = await TaskService.getTaskById(id);
+            res.status(200).json(result);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({error: 'Internal Server Error'});
         }
     }
 }
