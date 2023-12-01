@@ -9,6 +9,10 @@ class TaskService {
     static getTaskById(id: string): Promise<ITask> {
         return TaskRepository.getTaskById(id);
     }
+
+    static createTask(description: string): Promise<ITask> {
+        return TaskRepository.createTask(description);
+    }
 }
 
 export default TaskService;
