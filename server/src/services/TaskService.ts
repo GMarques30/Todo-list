@@ -6,7 +6,7 @@ class TaskService {
         return TaskRepository.getAllTasks();
     }
 
-    static getTaskById(id: string): Promise<ITask> {
+    static getTaskById(id: number): Promise<ITask> {
         return TaskRepository.getTaskById(id);
     }
 
@@ -14,11 +14,11 @@ class TaskService {
         return TaskRepository.createTask(description);
     }
 
-    static deleteTask(id: string): Promise<ITask> {
+    static deleteTask(id: number): Promise<ITask> {
         return TaskRepository.deleteTask(id);
     }
 
-    static updateTask(id: string, description: string, completed: string) {
+    static updateTask(id: number, description: string, completed: boolean) {
         return TaskRepository.updateTask(id, description, completed);
     }
 }
