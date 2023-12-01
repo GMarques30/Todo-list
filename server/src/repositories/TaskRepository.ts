@@ -31,6 +31,16 @@ class TaskRepository {
             })
         })
     }
+
+    static deleteTask(id: string): Promise<ITask> {
+        return new Promise<ITask>((resolve, reject) => {
+            database.query("DELETE FROM tasks WHERE id = ?", [id], (err, res) => {
+                if(err) return reject(err);
+
+                return resolve(res);
+            })
+        })
+    }
 }
 
 export default TaskRepository;
