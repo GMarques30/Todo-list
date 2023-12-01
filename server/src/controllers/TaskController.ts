@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import TaskService from '../services/TaskService';
 
 class TaskController {
-    static async getAllTasks(req: Request, res: Response): Promise<void> {
+    static async getAllTasks(req: Request, res: Response) {
         try {
             const result = await TaskService.getAllTasks();
             res.status(200).json(result);
@@ -12,7 +12,7 @@ class TaskController {
         }
     }
 
-    static async getTaskById(req: Request, res: Response): Promise<void> {
+    static async getTaskById(req: Request, res: Response) {
         try {
             const { id } = req.params;
 
@@ -24,7 +24,7 @@ class TaskController {
         }
     }
 
-    static async createTask(req: Request, res: Response): Promise<void> {
+    static async createTask(req: Request, res: Response) {
         try {
             const { description } = req.body;
 
@@ -36,7 +36,7 @@ class TaskController {
         }
     }
 
-    static async deleteTask(req: Request, res: Response): Promise<void> {
+    static async deleteTask(req: Request, res: Response) {
         try {
             const { id } = req.params;
 
@@ -48,7 +48,7 @@ class TaskController {
         }
     }
 
-    static async updateTask(req: Request, res: Response): Promise<void> {
+    static async updateTask(req: Request, res: Response) {
         try {
             const { id } = req.params;
             const { description, completed } = req.body;
