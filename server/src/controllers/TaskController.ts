@@ -14,7 +14,7 @@ class TaskController {
 
     static async getTaskById(req: Request, res: Response) {
         try {
-            const { id } = req.params;
+            const id = parseInt(req.params.id);
 
             const result = await TaskService.getTaskById(id);
             res.status(200).json(result);
@@ -26,7 +26,7 @@ class TaskController {
 
     static async createTask(req: Request, res: Response) {
         try {
-            const { description } = req.body;
+            const description: string = req.body.description;
 
             const result = await TaskService.createTask(description);
             res.status(201).json(result);
@@ -38,7 +38,7 @@ class TaskController {
 
     static async deleteTask(req: Request, res: Response) {
         try {
-            const { id } = req.params;
+            const id = parseInt(req.params.id);
 
             const result = await TaskService.deleteTask(id);
             res.status(200).json(result);
@@ -50,8 +50,9 @@ class TaskController {
 
     static async updateTask(req: Request, res: Response) {
         try {
-            const { id } = req.params;
-            const { description, completed } = req.body;
+            const id = parseInt(req.params.id);
+            const description: string = req.body.description;
+            const completed: boolean = req.body.completed;
 
             const result = await TaskService.updateTask(id, description, completed);
             res.status(200).json(result);
