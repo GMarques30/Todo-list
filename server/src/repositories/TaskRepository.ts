@@ -41,6 +41,16 @@ class TaskRepository {
             })
         })
     }
+
+    static updateTask(id: string, description: string, completed: string): Promise<ITask> {
+        return new Promise<ITask>((resolve, reject) => {
+            database.query("UPDATE tasks SET description = ?, completed = ? WHERE id = ?", [description, completed, id], (err, res) => {
+                if(err) return reject(err);
+
+                return resolve(res);
+            })
+        })
+    }
 }
 
 export default TaskRepository;
