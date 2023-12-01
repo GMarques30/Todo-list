@@ -11,6 +11,16 @@ class TaskRepository {
             })
         })
     }
+
+    static getTaskById(id: string): Promise<ITask> {
+        return new Promise<ITask>((resolve, reject) => {
+            database.query("SELECT * FROM tasks WHERE id = ?", [id], (err, res) => {
+                if (err) return reject(err);
+
+                return resolve(res);
+            })
+        })
+    }
 }
 
 export default TaskRepository;
