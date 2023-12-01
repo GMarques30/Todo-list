@@ -5,6 +5,10 @@ class TaskService {
     static getAllTasks(): Promise<ITask[]> {
         return TaskRepository.getAllTasks();
     }
+
+    static getTaskById(id: string): Promise<ITask> {
+        return TaskRepository.getTaskById(id);
+    }
 }
 
 export default TaskService;
