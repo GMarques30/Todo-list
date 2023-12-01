@@ -5,7 +5,7 @@ class TaskRepository {
     static getAllTasks(): Promise<ITask[]> {
         return new Promise((resolve, reject) => {
             database.query("SELECT * FROM tasks", (err, res) => {
-                if (err) return reject(err);
+                if(err) return reject(err);
 
                 return resolve(res);
             })
@@ -15,7 +15,17 @@ class TaskRepository {
     static getTaskById(id: string): Promise<ITask> {
         return new Promise<ITask>((resolve, reject) => {
             database.query("SELECT * FROM tasks WHERE id = ?", [id], (err, res) => {
-                if (err) return reject(err);
+                if(err) return reject(err);
+
+                return resolve(res);
+            })
+        })
+    }
+
+    static createTask(description: string): Promise<ITask> {
+        return new Promise((resolve, reject) => {
+            database.query("INSERT INTO tasks (description) VALUES (?)", [description], (err, res) => {
+                if(err) return reject(err);
 
                 return resolve(res);
             })
